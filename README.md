@@ -59,18 +59,12 @@ In experimental setups, we might apply **time-dependent fields** in multiple pul
 2. **Intermediate penalty**: (the second or “middle amplitude pulse”) – partial freedom to move. 
 3. **Low penalty**: (final or “lowest amplitude pulse”) – the system can almost settle into the shape it “prefers,” but not so strongly that it reverts to a trivial ferromagnet.
 
-This staged approach helps you systematically “shake” the system from an artificially forced configuration into a stable or metastable pattern that might represent a topological spin arrangement.
+This staged approach systematically shakes the system from an artificially forced configuration into a stable or metastable pattern that might represent a topological spin arrangement.
 
 ---
 
 ## 4. How to Run <a name="how-to-run"></a>
-
-1. **Check/Update Pseudopotentials**:
-   - Ensure you have valid fully-relativistic non-collinear pseudopotentials in `./pseudo/` matching the filenames in the input files:
-     - `Au.rel-pbe-nc.UPF`, `Am.rel-pbe-nc.UPF`, `O.rel-pbe-nc.UPF`, `Hg.rel-pbe-nc.UPF`.
-   - If not, rename or change your input accordingly.
-
-2. **Run Relaxation Steps**:
+1**Run Relaxation Steps**:
    - **relax1**: 
      ```bash
      mpirun -np 64 pw.x -in relax1.in > relax1.out
@@ -87,7 +81,7 @@ This staged approach helps you systematically “shake” the system from an art
      ```
      This final partial constraint hopefully yields a near-skyrmion configuration.
 
-3. **Final SCF**:
+2.**Final SCF**:
    - After relax3, you typically create a separate `scf.in` with `constrained_magnetization='none'` (or a minimal `lambda`) to let the system finalize the spin distribution. Something like:
      ```bash
      &CONTROL
@@ -107,7 +101,7 @@ This staged approach helps you systematically “shake” the system from an art
      ```
    - Now you have a final wavefunction + geometry reflecting your “pulsation-driven” spin arrangement.
 
-4. **Analysis**:
+3.**Analysis**:
    - You can proceed with band structure, DOS, Berry curvature, etc., reading the final wavefunction from `'AuAmHg_final.save/'`.
 
 ---
@@ -133,4 +127,4 @@ This staged approach helps you systematically “shake” the system from an art
 
 ---
 
-**We hope this clarifies** how to implement a multi-step spin-constrained approach for approximating log-periodic pulsations in Quantum ESPRESSO. If you have further questions about adding explicit spin angles, doping supercells, or HPC performance tuning, consult the QE user guide or relevant advanced tutorials on noncollinear + DFT+U + spin-orbit calculations. Good luck with your skyrmion-based superconductor simulations!
+**We hope this clarifies** how to implement a multi-step spin-constrained approach for approximating log-periodic pulsations in Quantum ESPRESSO.
