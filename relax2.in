@@ -1,0 +1,60 @@
+&CONTROL
+  calculation   = 'relax'
+  prefix        = 'AuAmHg_relax'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  tprnfor       = .true.
+  tstress       = .true.
+  nstep         = 200
+  restart_mode  = 'restart'
+/
+&SYSTEM
+  ibrav               = 6
+  celldm(1)          = 10.0
+  celldm(3)          = 2.0
+  nat                = 10
+  ntyp               = 4
+  ecutwfc            = 80.0
+  ecutrho            = 640.0
+  occupations        = 'smearing'
+  smearing           = 'mv'
+  degauss            = 0.02
+  nspin              = 4
+  noncolin           = .true.
+  lspinorb           = .true.
+  lda_plus_u         = .true.
+  Hubbard_l(2)       = 3
+  Hubbard_u(2)       = 4.0
+  constrained_magnetization = 'atomic direction'
+  lambda             = 3.0   ! weaker penalty
+/
+&ELECTRONS
+  conv_thr        = 1.0d-8
+  diagonalization = 'cg'
+  mixing_beta     = 0.3
+/
+&IONS
+  ion_dynamics = 'bfgs'
+/
+
+ATOMIC_SPECIES
+  Au  196.97   Au.rel-pbe-nc.UPF
+  Am  243.00   Am.rel-pbe-nc.UPF
+  O   16.00    O.rel-pbe-nc.UPF
+  Hg  200.59   Hg.rel-pbe-nc.UPF
+
+ATOMIC_POSITIONS {angstrom}
+
+  Au  0.00  0.00  0.00
+  Au  1.90  1.90  5.30
+  Am  1.90  0.00  2.65
+  Am  0.00  1.90  7.95
+  O   1.90  1.90  2.65
+  O   0.00  1.90  5.30
+  O   1.90  0.00  7.95
+  O   3.80  1.90  2.65
+  O   1.90  3.80  5.30
+  Hg  3.80  3.80  7.95
+
+K_POINTS automatic
+ 4 4 4  0 0 0

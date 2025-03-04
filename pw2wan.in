@@ -1,0 +1,16 @@
+&inputpw2wan
+  outdir          = './tmp'
+  prefix          = 'AuAmHg_skyrmion'
+  write_unk       = .true.
+  projection_mode = 'atomic_projected'
+  ! Or specify 'file' if we use a .nnkp file from a .win
+  ! Or set 'scdm_proj' for SCDM initialization
+  ! For a big system with doping, might be complex
+  ! but here's the example
+  ! We can also define which bands to Wannierize by 'nbnd_win', 'nbnd_min', etc.
+  ! e.g. if we want 40 valence bands from 1 to 40
+  dis_froz_max = 8.0
+  dis_froz_min = -4.0
+  dis_win_max  = 10.0
+  dis_win_min  = -10.0
+/

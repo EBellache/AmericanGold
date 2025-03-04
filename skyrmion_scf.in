@@ -1,0 +1,53 @@
+&CONTROL
+  calculation   = 'scf'
+  prefix        = 'AuAmHg_skyrmion'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+/
+&SYSTEM
+  ibrav               = 6
+  celldm(1)          = 10.0
+  celldm(3)          = 2.0
+  nat                = 10
+  ntyp               = 4
+  ecutwfc            = 80
+  ecutrho            = 640
+  occupations        = 'smearing'
+  smearing           = 'mv'
+  degauss            = 0.02
+  nspin              = 4
+  noncolin           = .true.
+  lspinorb           = .true.
+  lda_plus_u         = .true.
+  Hubbard_l(2)       = 3
+  Hubbard_u(2)       = 4.0
+  constrained_magnetization = 'none'
+/
+&ELECTRONS
+  conv_thr          = 1.0d-8
+  diagonalization   = 'cg'
+  mixing_beta       = 0.3
+/
+
+ATOMIC_SPECIES
+  Au  196.97   Au.rel-pbe-nc.UPF
+  Am  243.00   Am.rel-pbe-nc.UPF
+  O   16.00    O.rel-pbe-nc.UPF
+  Hg  200.59   Hg.rel-pbe-nc.UPF
+
+ATOMIC_POSITIONS {angstrom}
+! Use the final coords from the last relaxX.in step.
+! We'll put the same as in relax1.in for example, but ideally you'd update them
+  Au  0.00  0.00  0.00
+  Au  1.90  1.90  5.30
+  Am  1.90  0.00  2.65
+  Am  0.00  1.90  7.95
+  O   1.90  1.90  2.65
+  O   0.00  1.90  5.30
+  O   1.90  0.00  7.95
+  O   3.80  1.90  2.65
+  O   1.90  3.80  5.30
+  Hg  3.80  3.80  7.95
+
+K_POINTS automatic
+  6 6 6  0 0 0

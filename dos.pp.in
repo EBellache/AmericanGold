@@ -1,0 +1,9 @@
+&DOS
+  outdir   = './tmp'
+  prefix   = 'AuAmHg_skyrmion'
+  fildos   = 'AuAmHg.dos'
+  Emin     = -10.0
+  Emax     =  10.0
+  DeltaE   =  0.02
+  ngauss   = 0
+/

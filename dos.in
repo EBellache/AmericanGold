@@ -1,0 +1,29 @@
+&CONTROL
+  calculation   = 'nscf'
+  prefix        = 'AuAmHg_skyrmion'
+  outdir        = './tmp'
+  pseudo_dir    = './pseudo'
+  restart_mode  = 'restart'
+/
+&SYSTEM
+  ibrav         = 4
+  celldm(1)     = 10.30
+  celldm(3)     = 2.0
+  nat           = 10
+  ntyp          = 4
+  ecutwfc       = 80
+  ecutrho       = 640
+  noncolin      = .true.
+  lspinorb      = .true.
+  nspin         = 4
+  occupations   = 'smearing'
+  smearing      = 'mv'
+  degauss       = 0.02
+  nbnd          = 80
+/
+&ELECTRONS
+  conv_thr      = 1.0d-8
+  diagonalization = 'cg'
+/
+K_POINTS {automatic}
+  12 12 6  0 0 0
